@@ -86,6 +86,7 @@ class spark_compare:
     self.executionLogTable = self._validate_table_name(execution_log_table)
     self.resultTable = self._validate_table_name(result_table)
     self.last_result: DataFrameComparisonResult | None = None
+    self.diffDataFrame: DataFrame | None = None
 
     os_env = os.getenv("ENV") or "dv"
     try:
@@ -126,6 +127,12 @@ class spark_compare:
 
       self.spark = SparkSession.builder.getOrCreate()
     return self.spark
+
+  def setDiffDataFrame(self, diff_df: DataFrame | None) -> None:
+    self.diffDataFrame = diff_df
+
+  def getDiffDataFrame(self) -> DataFrame | None:
+    return self.diffDataFrame
 
   def _append_table_record(self, table_name: str, record: dict[str, Any]) -> None:
     from pyspark.sql.types import LongType, StringType, StructField, StructType
@@ -225,6 +232,7 @@ class spark_compare:
       diff_df = source_compare_df.diff_with_options(
         target_compare_df, options, *keys
       ).orderBy(*keys)
+      self.setDiffDataFrame(diff_df)
       changes_diff_df = diff_df.filter("diff = 'C'")
       missing_diff_df = diff_df.filter("diff in ('D', 'I')")
       missing_count = int(missing_diff_df.count())
@@ -332,10 +340,6 @@ class spark_compare:
     finally:
       if temp_view_name is not None:
         self.spark.catalog.dropTempView(temp_view_name)
-      if changes_diff_df is not None:
-        changes_diff_df.unpersist()
-      source_compare_df.unpersist()
-      target_compare_df.unpersist()
 
   def insertExecutionLog(self, i_testCaseId: Any, i_parentId: Any, i_notes: str, i_workLoadURL: str) -> str:
     comparison_id = str(uuid.uuid4())
