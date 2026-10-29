@@ -2,4 +2,4 @@ variables:
   dv_job_vars:
     type: complex
     default:
-      sql_demo_schedule: "0 30 7 ? * * *"
+      compare_demo_schedule: "0 30 7 ? * * *"

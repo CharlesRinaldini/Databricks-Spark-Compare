@@ -3,7 +3,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql.types import IntegerType, StringType, StructField, StructType
 
 
-class sqldemo(spark_compare):
+class compare_demo(spark_compare):
   _demo_schema = StructType([
     StructField("record_id", IntegerType(), nullable=False),
     StructField("category", StringType(), nullable=False),
