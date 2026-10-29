@@ -1,7 +1,7 @@
 # This is a Databricks asset bundle definition for edw.
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: sqldemo
+  name: sparkcomare
   uuid: eae3660c-f0c2-433c-b00a-46a45fff8f05
 
 include:
