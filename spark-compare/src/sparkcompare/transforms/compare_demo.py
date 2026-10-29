@@ -1,4 +1,7 @@
-from sparkcompare.utils.spark_compare import spark_compare
+import sys
+from pathlib import Path
+sys.path.append(str(Path.cwd().parent))
+from src.sparkcompare.utils.spark_compare import spark_compare
 from pyspark.sql import DataFrame
 from pyspark.sql.types import IntegerType, StringType, StructField, StructType
 

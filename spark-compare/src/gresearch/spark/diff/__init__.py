@@ -567,7 +567,7 @@ class Differ:
         #throws and error on serverless databricks, so we need to catch it and default to false
         try:
             case_sensitive = left.session().conf.get("spark.sql.caseSensitive") == "true"
-        except AttributeError:
+        except BaseException:
             case_sensitive = False  
 
         self._check_schema(left, right, id_columns, ignore_columns, case_sensitive)

@@ -1,4 +1,4 @@
-execute-sql/databricks.exe
+spark-compare/databricks.exe
 /.venv
 /.vscode
 /logs

@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+sys.path.append(str(Path.cwd().parent / "src"))
 import json
 import os
 import uuid

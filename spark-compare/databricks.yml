@@ -11,8 +11,6 @@ include:
 variables:
   environment:
     default: "dv"
-  sql_demo_schedule:
-    default: ${var.dv_job_vars.sql_demo_schedule}
 
 targets:
   dev:
@@ -26,7 +24,6 @@ targets:
       host: https://dbc-18ac467b-29cc.cloud.databricks.com
     variables:
       environment: "dv"
-      sql_demo_schedule: ${var.dv_job_vars.sql_demo_schedule}
       
   dev-agent:
     # Schedule jobs to run in DV as agent
@@ -36,6 +33,5 @@ targets:
       root_path: /Workspace/${bundle.name}/
     variables:
       environment: "dv"
-      sql_demo_schedule: ${var.dv_job_vars.sql_demo_schedule}
 
       

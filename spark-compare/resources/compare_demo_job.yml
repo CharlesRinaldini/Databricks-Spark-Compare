@@ -11,7 +11,7 @@ resources:
       tasks:
         - task_key: run_notebook
           notebook_task:
-            notebook_path: ../src/comparedemo.ipynb
+            notebook_path: ../notebooks/comparedemo.ipynb
             source: WORKSPACE
       queue:
         enabled: true
