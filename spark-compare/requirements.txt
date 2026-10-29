@@ -1,0 +1,13 @@
+## requirements-dev.txt: dependencies for local development.
+##
+## For defining dependencies used by jobs in Databricks Workflows, see
+## https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
+
+## pytest is the default package used for testing
+pytest
+pyspark-testing
+
+## Dependencies for building wheel files
+setuptools
+wheel
+databricks-connect

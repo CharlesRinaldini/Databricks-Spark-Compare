@@ -1,0 +1,11 @@
+{
+  "envConfig": {
+    "envName": "dv",
+    "scopeName": "dv-databricks-keyvault",
+    "databricksURL": "https://<your-workspace-url>.azuredatabricks.net",
+    "databricksTokenSecret": "dv-demo-databricks-executor-pat", 
+    "databricksToken": "<yourPAT>",
+    "databricksHTTPPath": "<your-warehouse-http-path>",
+    "databricksHost": "<your-warehouse-host>"
+  }
+}

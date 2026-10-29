@@ -1,0 +1,21 @@
+# Use https://www.freeformatter.com/cron-expression-generator-quartz.html to figure out cron expressions
+resources:
+  jobs:
+    sql_demo_job:
+      name: Demo SQL Job
+      schedule:
+        quartz_cron_expression: ${var.sql_demo_schedule}
+        timezone_id: America/Denver
+
+      email_notifications:
+        on_failure:
+          - rinaldini.charles@gmail.com
+
+      tasks:
+        - task_key: run_notebook
+          notebook_task:
+            notebook_path: ../src/demo.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

@@ -1,0 +1,4 @@
+execute-sql/databricks.exe
+/.venv
+/.vscode
+/logs
